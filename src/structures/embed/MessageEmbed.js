@@ -55,6 +55,59 @@ module.exports = class MessageEmbed {
 
   setTimestamp(timestamp = Date.now()) {
     this.timestamp = timestamp;
+    return this;
+  }
+
+  setProvider(provider) {
+    this.provider = new MessageEmbedProvider(provider);
+
+    return this;
+  }
+
+  setFooter(footer) {
+    if (typeof footer === "string") {
+      this.footer = new MessageEmbedFooter({
+        text: footer,
+      });
+    }
+
+    this.footer = new MessageEmbedFooter(footer);
+
+    return this;
+  }
+
+  setImage(image) {
+    if (typeof image === "string") {
+      this.image = new MessageEmbedImage({
+        url: image,
+      });
+    }
+
+    this.image = new MessageEmbedImage(image);
+
+    return this;
+  }
+
+  setAuthor(author) {
+    this.author = new MessageEmbedAuthor(author);
+    return this;
+  }
+
+  addField(field) {
+    if (MessageEmbedField.isInstanceofEmbedField(field)) {
+      this.fields.push(new MessageEmbedField(field));
+      return this;
+    }
+
+    return this;
+  }
+
+  addFields(...fields) {
+    for (const field of fields) {
+      this.addField(field);
+    }
+
+    return this;
   }
 
   getFields(onlyInlineFields = false) {
