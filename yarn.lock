@@ -8,7 +8,7 @@ collection@JustAWaifuHunter/collection#pelicano:
 
 discord-request@JustAWaifuHunter/requester:
   version "1.0.0"
-  resolved "https://codeload.github.com/JustAWaifuHunter/requester/tar.gz/3080ebea053ef6a03bc706e839626832dfa50d0a"
+  resolved "https://codeload.github.com/JustAWaifuHunter/requester/tar.gz/03d3d95587a1d760a4faee2e4fdeb730e2f3cd82"
 
 pako@^2.0.4:
   version "2.0.4"

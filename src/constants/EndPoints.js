@@ -36,4 +36,17 @@ module.exports.CDN = {
   DEFAULT_USER_AVATAR_URL: (discriminator) => {
     return `${this.CDN.DEFAULT_URL}/embed/avatars/${discriminator % 5}.png`;
   },
+
+  MEMBER_AVATAR_URL: (
+    guildID,
+    userID,
+    hash,
+    { size = "2048", dynamic = false, format = "png" }
+  ) => {
+    return `${
+      this.CDN.DEFAULT_URL
+    }/guilds/${guildID}/users/${userID}/avatars/${hash}.${
+      hash.startsWith("a_") ? (dynamic ? "gif" : format) : format
+    }?size=${size}`;
+  },
 };

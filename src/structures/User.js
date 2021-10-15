@@ -40,6 +40,10 @@ module.exports = class User extends Base {
     return CDN.DEFAULT_USER_AVATAR_URL(this.discriminator);
   }
 
+  displayAvatarURL({ size = "2048", dynamic = false, format = "png" }) {
+    return this.avatarUR({ size, dynamic, format }) ?? this.defaultAvatarURL();
+  }
+
   bannerURL({ size = "2048", dynamic = false, format = "png" }) {
     if (!this.banner) return null;
     return CDN.USER_BANNER_URL(this.id, this.banner, { size, dynamic, format });

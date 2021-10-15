@@ -18,4 +18,14 @@ module.exports = class MessageEmbedField {
   setInline(inline = false) {
     this.inline = inline;
   }
+
+  static isInstanceofEmbedField(obj) {
+    if (obj instanceof MessageEmbedField) {
+      return true;
+    } else if (obj.name || obj.value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 };

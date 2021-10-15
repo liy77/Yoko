@@ -19,7 +19,7 @@ module.exports = class Base {
   }
 
   clone() {
-    return Object.assign(Object.create(this));
+    return Object.assign(Object.create(this), this);
   }
 
   toJSON(props = []) {

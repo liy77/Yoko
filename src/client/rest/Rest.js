@@ -103,6 +103,8 @@ class Rest {
       } else if (MessageEmbed.isInstanceofEmbed(embeds)) {
         resolvedContent.embeds.push(embeds);
       }
+
+      delete contentNotResolvable.embeds;
     }
 
     if ("content" in contentNotResolvable) {
@@ -110,12 +112,41 @@ class Rest {
         typeof contentNotResolvable.content === "number"
           ? contentNotResolvable.content.toString()
           : contentNotResolvable.content;
+
+      delete contentNotResolvable.content;
     }
 
-    if (!resolvedContent.content && resolvedContent.embeds.length === 0) {
+    if ("attachments" in contentNotResolvable) {
+      const attachments = contentNotResolvable.attachments;
+      if (Array.isArray(attachments)) {
+        resolvedContent.attachments = attachments;
+      } else {
+        resolvedContent.attachments = [attachments];
+      }
+
+      delete contentNotResolvable.attachments;
+    }
+
+    if ("components" in contentNotResolvable) {
+      const components = contentNotResolvable.components;
+
+      if (Array.isArray(components)) {
+        resolvedContent.components = components;
+      } else {
+        resolvedContent.components = [components];
+      }
+
+      delete contentNotResolvable.components;
+    }
+
+    if (
+      !resolvedContent.content &&
+      !resolvedContent.attachments &&
+      resolvedContent.embeds.length === 0
+    ) {
       throw new TypeError("INVALID_MESSAGE_CONTENT");
     } else {
-      return resolvedContent;
+      return { ...resolvedContent, ...contentNotResolvable };
     }
   }
 }

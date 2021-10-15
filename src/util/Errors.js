@@ -85,7 +85,7 @@ module.exports.Messages = {
 
   DISCORD_API_ERROR: (message, url, method, body) =>
     `${message}\nEndPoint: ${url}\nMethod: ${method}${
-      body ? `\nBody: ${body}` : ""
+      body ? `\nBody: \n${JSON.stringify(body, null, "\t")}` : ""
     }`,
 };
 

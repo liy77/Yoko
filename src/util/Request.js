@@ -30,11 +30,20 @@ module.exports.create = async (
     headers,
   });
 
+  var attachments;
+
+  if (options.body?.attachments) {
+    attachments = options.body.attachments;
+    delete options.body.attachments;
+  }
+
   const res = await requester
     .request(endpoint, {
       auth: true,
       body: options.body,
       method: options.method ?? "GET",
+      attachments,
+      boundary: "Yoko"
     })
     .catch((err) => {
       throw new Error("HTTPS_ERROR", err);

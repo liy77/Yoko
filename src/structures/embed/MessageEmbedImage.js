@@ -3,7 +3,7 @@ const { TypeError } = require("../../util/Errors");
 module.exports = class MessageEmbedImage {
   constructor(data = {}) {
     this.url = data.url ?? null;
-    this.proxy_url = data.proxyURL ?? null;
+    this.proxy_url = data.proxy_url ?? data.proxyURL ?? null;
     this.height = data.height ?? null;
     this.width = data.width ?? null;
 
@@ -43,6 +43,16 @@ module.exports = class MessageEmbedImage {
 
     if (this.width && !Number.isInteger(this.width)) {
       throw new TypeError("INVALID_OPTION", "width", "a integer.");
+    }
+  }
+
+  static isInstanceofEmbedImage(obj) {
+    if (obj instanceof MessageEmbedImage) {
+      return true;
+    } else if (obj.url) {
+      return true;
+    } else {
+      return false;
     }
   }
 };

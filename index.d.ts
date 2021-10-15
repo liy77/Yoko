@@ -266,3 +266,5 @@ export class Intents {
     Intents.FLAGS.GUILD_WEBHOOKS |
     Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS;
 }
+
+export * from "./typings/extra";

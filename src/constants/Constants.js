@@ -43,7 +43,7 @@ module.exports.ClientEvents = {
 
   // Guild
   GUILD_CREATE: "guildCreate",
-  
+
   // Util
   DEBUG: "debug",
 };
@@ -111,6 +111,22 @@ module.exports.ChannelTypes = createEnum([
   "GUILD_PRIVATE_THREAD",
   "GUILD_STATE_VOICE",
 ]);
+
+module.exports.ComponentTypes = createEnum([
+  "NONE",
+  "ACTION_ROW",
+  "BUTTON",
+  "SELECT_MENU",
+]);
+
+module.exports.ButtonStyles = createEnum([
+  "NONE",
+  "PRIMARY",
+  "SECONDARY",
+  "SUCCESS",
+  "DANGER",
+  "LINK"
+])
 
 module.exports.MessageTypes = createEnum([
   "DEFAULT",

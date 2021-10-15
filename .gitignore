@@ -104,5 +104,7 @@ dist
 .tern-port
 
 **test.js
+**test.jpg
+
 /src/client/sharding
 /src/client/cluster

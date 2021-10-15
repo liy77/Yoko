@@ -11,6 +11,7 @@ const { makeCache } = require("../util/CacheFactory");
 module.exports = class Client extends EventEmitter {
   intents = 0;
   readyAt = null;
+  user = null
   constructor(options = {}) {
     super();
     this.intents = 0;

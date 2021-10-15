@@ -173,6 +173,7 @@ module.exports = class WebSocketShard extends EventEmitter {
         this.debug(`[READY] Session ${this.sessionID}.`);
         this.lastHeartbeatAcked = true;
         this.sendHeartbeat();
+        this.manager.actionPacket(packet, this);
         break;
 
       case wsEvents.RESUMED:
